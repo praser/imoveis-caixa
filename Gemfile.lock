@@ -1,27 +1,39 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    aws-eventstream (1.0.1)
+    aws-partitions (1.97.0)
+    aws-sdk-core (3.24.0)
+      aws-eventstream (~> 1.0)
+      aws-partitions (~> 1.0)
+      aws-sigv4 (~> 1.0)
+      jmespath (~> 1.0)
+    aws-sdk-kms (1.7.0)
+      aws-sdk-core (~> 3)
+      aws-sigv4 (~> 1.0)
+    aws-sdk-s3 (1.17.0)
+      aws-sdk-core (~> 3, >= 3.21.2)
+      aws-sdk-kms (~> 1)
+      aws-sigv4 (~> 1.0)
+    aws-sigv4 (1.0.3)
     httparty (0.16.2)
       multi_xml (>= 0.5.2)
+    jmespath (1.4.0)
     mini_portile2 (2.3.0)
     multi_xml (0.6.0)
     nokogiri (1.8.4)
       mini_portile2 (~> 2.3.0)
     nokogiri (1.8.4-x64-mingw32)
       mini_portile2 (~> 2.3.0)
-    rubyzip (1.2.1)
-    seven_zip_ruby (1.2.5)
-    seven_zip_ruby (1.2.5-x64-mingw32)
 
 PLATFORMS
   ruby
   x64-mingw32
 
 DEPENDENCIES
+  aws-sdk-s3
   httparty
   nokogiri
-  rubyzip
-  seven_zip_ruby
 
 BUNDLED WITH
    1.16.3

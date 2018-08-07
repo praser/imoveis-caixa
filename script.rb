@@ -1,5 +1,6 @@
 require 'httparty'
 require 'nokogiri'
+require 'aws-sdk-s3'
 
 # Download files from server
 ufs = %w(AC AL AP AM BA CE DF ES GO MA MT MS MG PA PB PR PE PI RJ RN RS RO RR SC SP SE TO)
@@ -40,10 +41,16 @@ files.each do |file|
 end
 
 # Write to output
-File.open("./files/#{Time.now.strftime '%Y-%m-%dT%H:%M:%S'}-data.json", 'w') do |file|
+filename = "#{Time.now.strftime '%Y-%m-%dT%H:%M:%S'}-data.json"
+File.open("./files/#{filename}", 'w') do |file|
   file.write(data.to_json)
 end
 
 # Clear directory
 system 'rm -rf ./files/*.7z'
 system 'rm -rf ./files/*.htm'
+
+# Upload json to S3
+s3 = Aws::S3::Resource.new(region:'us-east-2')
+obj = s3.bucket('imoveis-caixa').object(filename)
+obj.upload_file("./files/#{filename}")
