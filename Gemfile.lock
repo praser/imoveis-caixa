@@ -5,17 +5,23 @@ GEM
       multi_xml (>= 0.5.2)
     mini_portile2 (2.3.0)
     multi_xml (0.6.0)
+    nokogiri (1.8.4)
+      mini_portile2 (~> 2.3.0)
     nokogiri (1.8.4-x64-mingw32)
       mini_portile2 (~> 2.3.0)
     rubyzip (1.2.1)
+    seven_zip_ruby (1.2.5)
+    seven_zip_ruby (1.2.5-x64-mingw32)
 
 PLATFORMS
+  ruby
   x64-mingw32
 
 DEPENDENCIES
   httparty
   nokogiri
   rubyzip
+  seven_zip_ruby
 
 BUNDLED WITH
    1.16.3
