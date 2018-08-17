@@ -1,0 +1,7 @@
+.DS_Store
+files/*
+logs/*
+temp/*
+!*/**/.keep
+.gitignore
+.git

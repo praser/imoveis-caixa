@@ -30,7 +30,7 @@ module Realty
     end
 
     def photo(text)
-      text.strip.casecmp 'ver foto'
+      text.strip.casecmp('ver foto') == 0
     end
 
     def id(text)
