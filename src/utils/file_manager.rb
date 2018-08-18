@@ -1,7 +1,7 @@
 module Utils
   # Manages a file directory
   class FileManager
-    EXCEPT = ['.', '..'].freeze
+    EXCEPT = ['.', '..', '.keep'].freeze
 
     def initialize(path)
       @path = path

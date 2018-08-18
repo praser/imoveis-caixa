@@ -17,6 +17,7 @@ GEM
       aws-sdk-kms (~> 1)
       aws-sigv4 (~> 1.0)
     aws-sigv4 (1.0.3)
+    byebug (10.0.2)
     httparty (0.16.2)
       multi_xml (>= 0.5.2)
     jaro_winkler (1.5.1)
@@ -49,6 +50,7 @@ PLATFORMS
 
 DEPENDENCIES
   aws-sdk-s3
+  byebug
   httparty
   nokogiri
   rubocop

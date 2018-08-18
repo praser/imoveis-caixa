@@ -10,5 +10,6 @@ gem 'nokogiri'
 gem 'ruby-progressbar'
 
 group :development do
+  gem 'byebug'
   gem 'rubocop'
 end

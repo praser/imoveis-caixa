@@ -12,9 +12,10 @@ class DownloadFiles
     SE TO
   ].freeze
 
-  def initialize(folder = nil)
+  def initialize(ufs = nil, folder = nil)
+    @ufs = ufs || ESTATES
     @folder = folder || File.join(__dir__, '..', 'temp')
-    @progress = Utils::Progress.new(ESTATES.size, 'Downloading')
+    @progress = Utils::Progress.new(@ufs.size, 'Downloading')
   end
 
   def empty
@@ -22,7 +23,7 @@ class DownloadFiles
   end
 
   def download
-    ESTATES.each do |uf|
+    @ufs.each do |uf|
       Utils::DownloadRealtyTable.new(uf, @folder).start
       @progress.bar.increment
     end

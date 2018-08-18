@@ -8,14 +8,16 @@ require_relative 'realty/parser'
 class ParseFiles
   attr_accessor :realties
 
-  def initialize(_output = nil, temp = nil)
+  def initialize(output = nil, log = nil, temp = nil)
     @temp = temp || File.join(__dir__, '..', 'temp')
-    @file = Time.now.strftime('%Y%m%d%H%M%S')
+    @log = log || File.join(__dir__, '..', 'logs')
+    @output = output
+
+    @timestamp = Time.now.strftime('%Y%m%d%H%M%S')
     @nodes = []
     @progress = Utils::Progress.new(size, 'Processing')
     @realties = { realties: [] }
-
-    logfile = File.join(File.join(__dir__, '..', 'logs'), "#{@file}.log")
+    logfile = File.join(@log, "#{@timestamp}.log")
     @logger = Logger.new(logfile)
   end
 
@@ -32,7 +34,7 @@ class ParseFiles
   end
 
   def to_file
-    Utils::Output.new.to_json_file @file, @realties
+    Utils::Output.new(@output).to_json_file @timestamp, @realties
   end
 
   private
