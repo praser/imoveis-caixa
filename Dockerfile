@@ -8,4 +8,3 @@ WORKDIR /app
 COPY . /app
 COPY Gemfile Gemfile.lock ./
 RUN bundle install
-CMD ["ruby", "script.rb"]
