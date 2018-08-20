@@ -6,14 +6,15 @@ require_relative 'realty/parser'
 
 # Parse file into Ralty instance
 class ParseFiles
-  attr_accessor :realties
+  attr_accessor :realties, :filename
 
   def initialize(output = nil, log = nil, temp = nil)
     @temp = temp || File.join(__dir__, '..', 'temp')
     @log = log || File.join(__dir__, '..', 'logs')
-    @output = output
+    @output = output || File.join(__dir__, '..', 'files')
 
     @timestamp = Time.now.strftime('%Y%m%d%H%M%S')
+    @filename = "#{@timestamp}.json"
     @nodes = []
     @progress = Utils::Progress.new(size, 'Processing')
     @realties = { realties: [] }
@@ -34,7 +35,12 @@ class ParseFiles
   end
 
   def to_file
-    Utils::Output.new(@output).to_json_file @timestamp, @realties
+    output = Utils::Output.new(@output, @filename)
+    output.write @realties
+  end
+
+  def location
+    File.join(@output, @filename)
   end
 
   private

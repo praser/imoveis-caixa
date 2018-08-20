@@ -5,3 +5,4 @@ temp/*
 !*/**/.keep
 .gitignore
 .git
+.byebug_history
