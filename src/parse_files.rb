@@ -6,7 +6,7 @@ require_relative 'realty/parser'
 
 # Parse file into Ralty instance
 class ParseFiles
-  attr_accessor :realties, :filename
+  attr_accessor :realties, :logfile
 
   def initialize(output = nil, log = nil, temp = nil)
     @temp = temp || File.join(__dir__, '..', 'temp')
@@ -18,8 +18,8 @@ class ParseFiles
     @nodes = []
     @progress = Utils::Progress.new(size, 'Processing')
     @realties = { realties: [] }
-    logfile = File.join(@log, "#{@timestamp}.log")
-    @logger = Logger.new(logfile)
+    @logfile = File.join(@log, "#{@timestamp}.log")
+    @logger = Logger.new(@logfile)
   end
 
   def empty

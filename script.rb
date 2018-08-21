@@ -46,3 +46,4 @@ data.to_file
 data.empty
 
 Utils::AmazonS3.upload('imoveis-caixa.data-crawler', data.location)
+Utils::AmazonS3.upload('imoveis-caixa.data-crawler', data.logfile)
